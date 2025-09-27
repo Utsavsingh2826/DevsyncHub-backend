@@ -19,13 +19,16 @@ const corsOptions = {
         
         const allowedOrigins = [
             'https://devsync-hub-frontend.vercel.app',
+            'https://devsync-hub-frontend-asb570s2q.vercel.app',
+            'https://devsync-hub-frontend-*.vercel.app',
             'http://localhost:5173',
             'http://localhost:3000',
             'http://127.0.0.1:5173',
             'http://127.0.0.1:3000'
         ];
         
-        if (allowedOrigins.indexOf(origin) !== -1) {
+        // Check if origin is in allowed list or is a Vercel domain
+        if (allowedOrigins.indexOf(origin) !== -1 || origin.includes('.vercel.app')) {
             callback(null, true);
         } else {
             console.log('CORS blocked origin:', origin);
